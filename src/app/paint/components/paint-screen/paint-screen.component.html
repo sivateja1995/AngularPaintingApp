@@ -1,1 +1,19 @@
-<p>paint-screen works!</p>
+<div
+  fxLayout="column"
+  fxLayoutAlign="start stretch"
+  fxLayoutGap="gappx"
+  [fxShow]="true"
+  [fxHide]="false"
+  class="w-100 h-100"
+>
+  <!-- start of the toolbar  -->
+  <div
+    fxLayout="row"
+    fxLayoutAlign="start stretch"
+    fxLayoutGap="gappx"
+    class="w-100 h-100"
+  >
+    <app-paint-toolbar class="w-100 h-100"></app-paint-toolbar>
+  </div>
+  <!-- end of the tool bar  -->
+</div>
