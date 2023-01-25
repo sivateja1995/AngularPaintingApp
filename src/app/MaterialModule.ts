@@ -9,6 +9,9 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
 
 
 
@@ -16,29 +19,35 @@ import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
-    imports: [
-        MatButtonModule,
-        MatBottomSheetModule,
-        MatCardModule,
-        MatDialogModule,
-        MatGridListModule,
-        MatIconModule,
-        MatRippleModule,
-        MatTooltipModule,
-        MatToolbarModule,
-        MatMenuModule
-    ],
-    exports: [
-        MatButtonModule,
-        MatBottomSheetModule,
-        MatCardModule,
-        MatDialogModule,
-        MatGridListModule,
-        MatIconModule,
-        MatRippleModule,
-        MatTooltipModule,
-        MatToolbarModule,
-        MatMenuModule
-    ],
+  imports: [
+    MatButtonModule,
+    MatBottomSheetModule,
+    MatCardModule,
+    MatDialogModule,
+    MatGridListModule,
+    MatIconModule,
+    MatRippleModule,
+    MatTooltipModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatFormFieldModule,
+    MatInputModule
+  ],
+  exports: [
+    MatButtonModule,
+    MatBottomSheetModule,
+    MatCardModule,
+    MatDialogModule,
+    MatGridListModule,
+    MatIconModule,
+    MatRippleModule,
+    MatTooltipModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatSidenavModule,
+    MatFormFieldModule,
+    MatInputModule
+  ],
 })
 export class MaterialModule { }
