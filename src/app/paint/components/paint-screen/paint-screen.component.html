@@ -4,16 +4,49 @@
   fxLayoutGap="gappx"
   [fxShow]="true"
   [fxHide]="false"
-  class="w-100 h-100"
+  class="w-100 h-100 background-color"
 >
   <!-- start of the toolbar  -->
   <div
     fxLayout="row"
     fxLayoutAlign="start stretch"
     fxLayoutGap="gappx"
-    class="w-100 h-100"
+    class="w-100"
   >
-    <app-paint-toolbar class="w-100 h-100"></app-paint-toolbar>
+    <app-paint-toolbar class="w-100"></app-paint-toolbar>
   </div>
   <!-- end of the tool bar  -->
+
+  <!-- secondry frame  -->
+  <div
+    fxLayout="row"
+    fxLayoutAlign="start stretch"
+    fxLayoutGap="gappx"
+    class="w-100 h-100"
+  >
+    <!-- side nav toolbar  -->
+    <div
+      fxLayout="column"
+      fxLayoutAlign="start stretch"
+      fxLayoutGap="gappx"
+      class="w-20 h-100 secondary"
+      fxFlex="15"
+    >
+      <app-paint-tools-sidebar></app-paint-tools-sidebar>
+    </div>
+    <!-- end of the side nav toolbar -->
+
+    <!-- paint  screen  -->
+    <div
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      fxLayoutGap="gappx"
+      class="w-100 h-100 "
+      fxFlex="80"
+    >
+      <app-paint-section></app-paint-section>
+    </div>
+    <!-- end of the paint screen  -->
+  </div>
+  <!-- end of the secondry frame  -->
 </div>

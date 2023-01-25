@@ -9,6 +9,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 
 
@@ -16,29 +17,31 @@ import { MatMenuModule } from '@angular/material/menu';
 
 
 @NgModule({
-    imports: [
-        MatButtonModule,
-        MatBottomSheetModule,
-        MatCardModule,
-        MatDialogModule,
-        MatGridListModule,
-        MatIconModule,
-        MatRippleModule,
-        MatTooltipModule,
-        MatToolbarModule,
-        MatMenuModule
-    ],
-    exports: [
-        MatButtonModule,
-        MatBottomSheetModule,
-        MatCardModule,
-        MatDialogModule,
-        MatGridListModule,
-        MatIconModule,
-        MatRippleModule,
-        MatTooltipModule,
-        MatToolbarModule,
-        MatMenuModule
-    ],
+  imports: [
+    MatButtonModule,
+    MatBottomSheetModule,
+    MatCardModule,
+    MatDialogModule,
+    MatGridListModule,
+    MatIconModule,
+    MatRippleModule,
+    MatTooltipModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatSidenavModule
+  ],
+  exports: [
+    MatButtonModule,
+    MatBottomSheetModule,
+    MatCardModule,
+    MatDialogModule,
+    MatGridListModule,
+    MatIconModule,
+    MatRippleModule,
+    MatTooltipModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatSidenavModule
+  ],
 })
 export class MaterialModule { }

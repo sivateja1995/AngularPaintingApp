@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 :root {
-  --background: #fffbfedc;
+  --background: #fffbfe81;
   --primar: #6750a4;
   --secondry: #625b71;
   --tertiary: #7d5260;
@@ -86,7 +86,7 @@ body {
 }
 
 .on-primary {
-  background-color: var(--on-primary) !important;
+  color: var(--on-primary) !important;
 }
 
 .secondary {
@@ -94,10 +94,15 @@ body {
 }
 
 .onSecondary {
-  background-color: var(--on-secondary) !important;
+  color: var(--on-secondary) !important;
 }
 
 
-.boundary{
+.boundary {
   background-color: var(--outline) !important;
+}
+
+
+.teriatry{
+  background-color: var(--tertiary);
 }
