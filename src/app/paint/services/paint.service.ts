@@ -2,12 +2,19 @@ import { Injectable } from '@angular/core';
 
 let infiniteX = Infinity;
 let infiniteY = Infinity;
-let colorHue = 1;
+
 
 @Injectable({ 'providedIn': 'root' })
 export class PaintService {
   private canvas: HTMLCanvasElement | null = null;
-  private ctx!: CanvasRenderingContext2D ;
+  private ctx!: CanvasRenderingContext2D;
+  public lineWidth: number = 1;
+  public color: string = '#000';
+
+
+  public setLinewidth(value: number): void {
+    this.lineWidth = value;
+  }
 
   initialize(mountPoint: HTMLElement) {
     this.canvas = mountPoint.querySelector('canvas') as HTMLCanvasElement;
@@ -16,12 +23,12 @@ export class PaintService {
     this.canvas.height = mountPoint.offsetHeight;
     this.ctx.lineJoin = 'round';
     this.ctx.lineCap = 'round';
-    this.ctx.lineWidth = 30;
+    this.ctx.lineWidth = this.lineWidth;
   }
 
   paint({ clientX = 0, clientY = 0 }) {
-    console.log("clientx, clienty: ", clientX, clientY);
-    this.ctx.strokeStyle = `hsl(${colorHue}, 100%, 60%)`;
+    this.ctx.strokeStyle = this.color;
+    this.ctx.lineWidth = this.lineWidth;
     this.ctx.beginPath();
     if (
       Math.abs(infiniteX - clientX) < 100 &&
@@ -33,6 +40,6 @@ export class PaintService {
     this.ctx.stroke();
     infiniteX = clientX;
     infiniteY = clientY;
-    colorHue++;
+    this.color;
   }
 }

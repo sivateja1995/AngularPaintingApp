@@ -15,7 +15,6 @@ export class PaintSectionComponent implements OnInit, AfterViewInit {
   constructor(private paintSvc: PaintService, private elRef: ElementRef) { }
 
   ngOnInit(): void {
-    console.log(this.elRef)
     this.paintSvc.initialize(this.elRef.nativeElement)
     this.startPainting()
   }

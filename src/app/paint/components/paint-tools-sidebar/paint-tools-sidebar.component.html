@@ -1,2 +1,13 @@
-<div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="gappx" class="secondary">
-</div>
+<mat-card class="sidenav w-80">
+  <mat-card-content>
+    <mat-form-field class="w-100" appearance="outline" >
+      <mat-label>select color</mat-label>
+      <input matInput type="color"   [(ngModel)]="color" (change)="colorChange()" />
+    </mat-form-field>
+
+    <mat-form-field class="w-100" appearance="outline" >
+      <mat-label>select Width</mat-label>
+      <input matInput type="number" min="1"    [(ngModel)]="width" (change)="widthChange()" />
+    </mat-form-field>
+  </mat-card-content>
+</mat-card>

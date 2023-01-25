@@ -4,14 +4,14 @@
   fxLayoutGap="gappx"
   [fxShow]="true"
   [fxHide]="false"
-  class="w-100 h-100 background-color"
+  class="w-100 h-100"
 >
   <!-- start of the toolbar  -->
   <div
     fxLayout="row"
     fxLayoutAlign="start stretch"
     fxLayoutGap="gappx"
-    class="w-100"
+    class="w-100 "
   >
     <app-paint-toolbar class="w-100"></app-paint-toolbar>
   </div>
@@ -27,9 +27,9 @@
     <!-- side nav toolbar  -->
     <div
       fxLayout="column"
-      fxLayoutAlign="start stretch"
+      fxLayoutAlign="center stretch"
       fxLayoutGap="gappx"
-      class="w-20 h-100 secondary"
+      class="w-20 h-100"
       fxFlex="15"
     >
       <app-paint-tools-sidebar></app-paint-tools-sidebar>
@@ -39,7 +39,7 @@
     <!-- paint  screen  -->
     <div
       fxLayout="column"
-      fxLayoutAlign="center center"
+      fxLayoutAlign="center end"
       fxLayoutGap="gappx"
       class="w-100 h-100 "
       fxFlex="80"
