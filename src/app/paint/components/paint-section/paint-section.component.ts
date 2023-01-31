@@ -1,67 +1,82 @@
-import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
-import { mergeMap, takeUntil } from 'rxjs/operators';
-import { fromEvent } from 'rxjs';
-import { PaintService } from '../../services/paint.service';
+import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
+import { Subject, debounceTime, takeUntil } from 'rxjs';
+import { Point } from '../types/base/point';
 
 @Component({
   selector: 'app-paint-section',
-  template: `
-    <canvas #mount id="canvas"></canvas>
-  `,
-  styleUrls: ['./paint-section.component.css']
+  template: ` <ng-content></ng-content> `,
+  styleUrls: ['./paint-section.component.css'],
 })
-export class PaintSectionComponent implements OnInit, AfterViewInit {
+export class PaintSectionComponent implements OnInit, AfterViewInit, OnDestroy {
+  @ViewChild(' ', { static: true })
+  scrollerDiv!: ElementRef;
 
-  constructor(private paintSvc: PaintService, private elRef: ElementRef) { }
+  private _scrollListener!: () => void;
+  private _isModelLocked: boolean = false;
+
+  constructor(private _element: ElementRef, private _renderer: Renderer2) { }
+
+  @Input()
+  public set scrollPosition(scrollPosition: Point) {
+    this._isModelLocked = true;
+    setTimeout(() => {
+      this._element.nativeElement.scrollLeft = scrollPosition.w;
+      this._element.nativeElement.scrollTop = scrollPosition.h;
+    });
+  }
+  @Output()
+  public scrollPositionChange: EventEmitter<Point> = new EventEmitter<Point>();
+  @Output()
+  public viewportSizeChange: EventEmitter<Point> = new EventEmitter<Point>();
+
+  private _ngUnsubscribe: Subject<void> = new Subject();
+  private _viewportScrolled: Subject<Point> = new Subject<Point>();
+  private _viewportResized: Subject<Point> = new Subject<Point>();
 
   ngOnInit(): void {
-    this.paintSvc.initialize(this.elRef.nativeElement)
+    this._viewportScrolled.pipe(debounceTime(400), takeUntil(this._ngUnsubscribe)).subscribe((scrollPosition) => {
+      this.scrollPositionChange.emit(scrollPosition);
+    });
+    this._viewportResized.pipe(debounceTime(400), takeUntil(this._ngUnsubscribe)).subscribe((viewportSize) => {
+      this.viewportSizeChange.emit(viewportSize);
+    });
 
-  }
-
-
-  ngAfterViewInit(): void {
-    this.drawRectangle()
-  }
-
-  // function for the line
-  private startLine() {
-    const { nativeElement } = this.elRef;
-    const canvas = nativeElement.querySelector('canvas') as HTMLCanvasElement
-    const move$ = fromEvent<MouseEvent>(canvas, 'mousemove')
-    const down$ = fromEvent<MouseEvent>(canvas, 'mousedown')
-    const up$ = fromEvent<MouseEvent>(canvas, 'mouseup')
-    const paints$ = down$.pipe(
-      mergeMap(down => move$.pipe(takeUntil(up$)))
-      // mergeMap(down => move$)
-    );
-
-
-
-    const offset = getOffset(canvas)
-
-    paints$.subscribe((event) => {
-      const clientX = event.clientX - offset.left
-      const clientY = event.clientY - offset.top
-      this.paintSvc.line({ clientX, clientY })
+    setTimeout(() => {
+      this.onResize(); // Report initial viewport size
     });
   }
 
-
-
-  // function for the drawing the rectangle.
-  private drawRectangle() {
-    this.paintSvc.rectangle();
+  ngOnDestroy(): void {
+    this._ngUnsubscribe.next();
+    this._ngUnsubscribe.complete();
+    this._scrollListener();
   }
 
-}
-
-function getOffset(el: HTMLElement) {
-  const rect = el.getBoundingClientRect();
-
-  return {
-    top: rect.top + document.body.scrollTop,
-    left: rect.left + document.body.scrollLeft
+  ngAfterViewInit(): void {
+    this._scrollListener = this._renderer.listen(this._element.nativeElement, 'scroll', this.onScroll.bind(this));
   }
 
+  onScroll(event: Event) {
+    if (this._isModelLocked) {
+      this._isModelLocked = false;
+    } else {
+      if (event.srcElement) {
+        // @ts-ignore
+        const scrollPosition: Point = { w: event.srcElement.scrollLeft, h: event.srcElement.scrollTop };
+        this._viewportScrolled.next(scrollPosition);
+      }
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    // @ts-ignore
+    const viewportSize: Point = {
+      w: this._element.nativeElement.clientWidth,
+      h: this._element.nativeElement.clientHeight,
+    };
+    this._viewportResized.next(viewportSize);
+  }
 }
+
+
