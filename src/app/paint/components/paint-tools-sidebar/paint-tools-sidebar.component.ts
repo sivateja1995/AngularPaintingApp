@@ -9,7 +9,7 @@ import { PaintService } from '../../services/paint.service';
 })
 export class PaintToolsSidebarComponent implements OnInit {
   public color: any;
-  public width: number = 1;
+
 
 
   constructor(public paint:PaintService) { }
@@ -24,8 +24,8 @@ export class PaintToolsSidebarComponent implements OnInit {
 
 
   // funciton for the width change
-  widthChange() {
-    this.paint.setLinewidth(this.width);
+  widthChange(width:string) {
+    this.paint.setLineWidth(Number(width));
   }
 
 }

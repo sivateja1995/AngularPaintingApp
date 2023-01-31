@@ -1,12 +1,12 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { mergeMap, takeUntil, switchMap } from 'rxjs/operators';
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
+import { mergeMap, takeUntil } from 'rxjs/operators';
 import { fromEvent } from 'rxjs';
 import { PaintService } from '../../services/paint.service';
 
 @Component({
   selector: 'app-paint-section',
   template: `
-    <canvas #mount></canvas>
+    <canvas #mount id="canvas"></canvas>
   `,
   styleUrls: ['./paint-section.component.css']
 })
@@ -16,15 +16,16 @@ export class PaintSectionComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.paintSvc.initialize(this.elRef.nativeElement)
-    this.startPainting()
+
   }
 
 
   ngAfterViewInit(): void {
-
+    this.drawRectangle()
   }
 
-  private startPainting() {
+  // function for the line
+  private startLine() {
     const { nativeElement } = this.elRef;
     const canvas = nativeElement.querySelector('canvas') as HTMLCanvasElement
     const move$ = fromEvent<MouseEvent>(canvas, 'mousemove')
@@ -35,15 +36,22 @@ export class PaintSectionComponent implements OnInit, AfterViewInit {
       // mergeMap(down => move$)
     );
 
-    down$.subscribe(console.info)
+
 
     const offset = getOffset(canvas)
 
     paints$.subscribe((event) => {
       const clientX = event.clientX - offset.left
       const clientY = event.clientY - offset.top
-      this.paintSvc.paint({ clientX, clientY })
+      this.paintSvc.line({ clientX, clientY })
     });
+  }
+
+
+
+  // function for the drawing the rectangle.
+  private drawRectangle() {
+    this.paintSvc.rectangle();
   }
 
 }

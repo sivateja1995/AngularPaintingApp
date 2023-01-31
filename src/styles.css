@@ -105,6 +105,21 @@ body {
 }
 
 
-.teriatry{
+.teriatry {
   background-color: var(--tertiary);
+}
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 100,
+    'GRAD' -25,
+    'opsz' 48
+}
+
+
+.icon{
+  width: 24px !important;
+  height: 24px !important;
 }
