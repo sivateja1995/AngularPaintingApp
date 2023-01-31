@@ -11,7 +11,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconTestingModule } from '@angular/material/icon/testing';
 
 
 
@@ -32,7 +33,8 @@ import {MatInputModule} from '@angular/material/input';
     MatMenuModule,
     MatSidenavModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatIconTestingModule
   ],
   exports: [
     MatButtonModule,
@@ -47,7 +49,8 @@ import {MatInputModule} from '@angular/material/input';
     MatMenuModule,
     MatSidenavModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatIconTestingModule
   ],
 })
 export class MaterialModule { }

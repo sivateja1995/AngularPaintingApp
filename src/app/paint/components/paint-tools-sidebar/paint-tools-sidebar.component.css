@@ -1,4 +1,72 @@
-.sidenav{
+.sidenav {
   height: 80vh !important;
   margin: 1rem !important;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.grid-size-container {
+  margin: 1rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  grid-auto-rows: 20px;
+  grid-auto-columns: 20px;
+
+}
+
+
+.line {
+  transform: rotate(45deg) !important;
+}
+
+
+.sprinkler {
+  font-variation-settings:
+    'FILL' 1,
+    'wght' 300,
+    'GRAD' 0,
+    'opsz' 48
+}
+
+.size-4 {
+  background-color: black;
+  width: 4px !important;
+  height: 4px !important;
+  border-radius: 100% !important;
+}
+
+.size-8 {
+  background-color: black;
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 100% !important;
+}
+
+.size-16 {
+  background-color: black;
+  width: 16px !important;
+  height: 16px !important;
+  border-radius: 100% !important;
+}
+
+.size-32 {
+  background-color: black;
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 100% !important;
+}
+
+
+.save{
+  border-radius: 4px !important;
+  margin: 5px !important;
+}
+
+.clear{
+  border-radius: 4px !important;
+  margin: 5px !important;
 }
