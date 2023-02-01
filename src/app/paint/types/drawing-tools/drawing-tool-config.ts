@@ -3,7 +3,7 @@ import { ColorPickerAction } from '../actions/drawing-tool-actions/color-picker-
 import { DrawingToolAction } from '../actions/drawing-tool-actions/drawing-tool-action';
 import { EllipseAction } from '../actions/drawing-tool-actions/ellipse-action';
 import { LineAction } from '../actions/drawing-tool-actions/line-action';
-import { MagnifierAction } from '../actions/drawing-tool-actions/magnifier-action';
+// import { MagnifierAction } from '../actions/drawing-tool-actions/magnifier-action';
 import { PencilAction } from '../actions/drawing-tool-actions/pencil-action';
 import { RectangleAction } from '../actions/drawing-tool-actions/rectangle-action';
 import { RectangleSelectAction } from '../actions/drawing-tool-actions/rectangle-select-action';
@@ -48,13 +48,13 @@ export const DRAWING_TOOL_CONFIG: { [key in DrawingToolType]: DrawingToolConfig 
     ...DRAWING_TOOL_CONFIG_DEFAULTS,
     actionClass: ColorPickerAction,
   },
-  [DrawingToolType.magnifier]: {
-    ...DRAWING_TOOL_CONFIG_DEFAULTS,
-    behaviour: DrawingToolBehaviour.SINGLE_POINT_WITH_PREVIEW,
-    helpText: 'Changes the magnification: left click to zoom in, right click to zoom out.',
-    invertedPreview: true,
-    actionClass: MagnifierAction,
-  },
+  // [DrawingToolType.magnifier]: {
+  //   ...DRAWING_TOOL_CONFIG_DEFAULTS,
+  //   behaviour: DrawingToolBehaviour.SINGLE_POINT_WITH_PREVIEW,
+  //   helpText: 'Changes the magnification: left click to zoom in, right click to zoom out.',
+  //   invertedPreview: true,
+  //   actionClass: MagnifierAction,
+  // },
   [DrawingToolType.pencil]: {
     ...DRAWING_TOOL_CONFIG_DEFAULTS,
     behaviour: DrawingToolBehaviour.FREE_DRAW,

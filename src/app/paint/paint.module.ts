@@ -8,7 +8,7 @@ import { PaintToolsSidebarComponent } from './components/paint-tools-sidebar/pai
 import { PaintColorPalletComponent } from './components/paint-color-pallet/paint-color-pallet.component';
 import { SharedModule } from '../shared/shared.module';
 import { PaintService } from './services/paint.service';
-import { PaintSectionComponent } from './components/paint-section/paint-section.component';
+
 import { ZoomableCanvasComponent } from './components/zoomable-canvas/zoomable-canvas.component';
 import { SelectionFrameComponent } from './components/selection-frame/selection-frame.component';
 import { MouseTrackerComponent } from './components/mouse-tracker/mouse-tracker.component';
@@ -32,7 +32,6 @@ const paintRoutes: Routes = [
     PaintToolbarComponent,
     PaintToolsSidebarComponent,
     PaintColorPalletComponent,
-    PaintSectionComponent,
     ZoomableCanvasComponent,
     SelectionFrameComponent,
     MouseTrackerComponent,

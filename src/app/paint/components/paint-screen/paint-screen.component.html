@@ -1,21 +1,21 @@
 <app-modal-window
-  [title]="store.state.fileName + ' - Paint'"
   [fullscreen]="true"
-  [icon]="'paint'"
 >
   <div class="tsp-vertical-bar">
-    <!-- <div class="tsp-horizontal-bar">
-      <tsp-menu [menuStructure]="store.state.menuStructure" (itemSelected)="store.executeMenuAction($event.action)">
-      </tsp-menu>
-    </div> -->
+     <div class="primary">
+      <app-paint-toolbar></app-paint-toolbar>
+    </div> 
 
     <div class="tsp-horizontal-bar tsp-can-grow">
       <div class="tsp-vertical-bar">
-        <app-toolbox
-          [selectedTool]="selectedToolType"
-          (selectedToolChange)="store.setDrawingTool($event)"
-        >
-        </app-toolbox>
+        
+          <app-toolbox
+            class="grid"
+            [selectedTool]="selectedToolType"
+            (selectedToolChange)="store.setDrawingTool($event)"
+          >
+          </app-toolbox>
+   
         <app-drawing-tool-options
           [selectedTool]="selectedToolType"
           [options]="store.state.drawingToolOptions"

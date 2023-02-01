@@ -425,7 +425,7 @@ export class TsPaintStore extends Store<TsPaintStoreState> {
     event: KeyboardEvent
   ):any {
     const menuAction: MenuActionType = findMenuActionTypeByHotkeyEvent(
-      [...this.state.menuStructure, ...this.state.hiddenHotkeyShortcuts],
+      [...this.state?.menuStructure, ...this.state?.hiddenHotkeyShortcuts],
       event
     ) as MenuActionType;
     if (menuAction) {
