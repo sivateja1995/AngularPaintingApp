@@ -43,6 +43,7 @@ const paintRoutes: Routes = [
     ImageScrollerComponent,
     StretchSkewWindowComponent,
     IntegerInputComponent,
+    SelectionFrameComponent
   ],
   imports: [CommonModule, RouterModule.forChild(paintRoutes), SharedModule],
   providers: [PaintService],
