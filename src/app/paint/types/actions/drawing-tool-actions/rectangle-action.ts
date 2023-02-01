@@ -27,7 +27,7 @@ export class RectangleAction extends DrawingToolAction {
       );
     } else if (options.fillType === FillType.FILL_SECONDARY) {
       fillRectangle({ start: points[0], end: points[1] }, color2, image);
-      drawRectangle({ start: points[0], end: points[1] }, color1, image);
+      drawRectangle({ start: points[0], end: points[1] }, color1, image,this.getborderLine(state));
     } else {
       fillRectangle({ start: points[0], end: points[1] }, color1, image);
     }
