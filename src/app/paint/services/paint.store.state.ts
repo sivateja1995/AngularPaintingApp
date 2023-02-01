@@ -13,7 +13,7 @@ import { DrawingToolOptions } from '../types/drawing-tools/drawing-tool-options'
 
 export class TsPaintStoreState {
   zoom: number = 1;
-  image: ImageData = createImage(300, 200);
+  image: ImageData = createImage(1200, 600);
   scrollPosition: Point = { w: 0, h: 0 };
   viewportSize: Point = { w: 600, h: 400 };
   previewImage!: ImageData;
