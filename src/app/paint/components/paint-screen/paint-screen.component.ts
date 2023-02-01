@@ -49,14 +49,7 @@ export class PaintScreenComponent implements OnInit {
     this.store.loadFile(pastedFile);
   }
 
-  @HostListener('window:keydown', ['$event'])
-  keyEvent(event: KeyboardEvent) {
-    const executed: boolean = this.store.executeHotkeyAction(event);
-    if (executed) {
-      event.preventDefault();
-      event.stopPropagation();
-    }
-  }
+
 
   @HostListener('window:beforeunload', ['$event'])
   beforeunload(event: any) {

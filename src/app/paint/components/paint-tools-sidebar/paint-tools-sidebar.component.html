@@ -1,13 +1,1 @@
-<div class="tsp-vertical-bar">
-  <app-toolbox  
-    [selectedTool]="selectedToolType"
-    (selectedToolChange)="store.setDrawingTool($event)"
-  >
-  </app-toolbox>
-  <app-drawing-tool-options
-    [selectedTool]="selectedToolType"
-    [options]="store.state.drawingToolOptions"
-    (optionsChange)="store.setDrawingToolOptions($event)"
-  >
-  </app-drawing-tool-options>
-</div>
+<p>paint tool bar works !!!</p>

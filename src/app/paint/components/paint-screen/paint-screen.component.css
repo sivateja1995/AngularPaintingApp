@@ -1,5 +1,12 @@
-.background-color{
+.background-color {
   background-color: var(--background) !important;
 }
 
 
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  grid-template-rows: repeat(5, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}

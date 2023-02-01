@@ -5,7 +5,6 @@ import { Color } from '../../../types/base/color';
 import { TsPaintStoreState } from 'src/app/paint/services/paint.store.state';
 import { RectangleArea } from '../../base/rectangle-area';
 import { getImagePart, fillAreaInOriginalImage } from '../../../helpers/image.helpers';
-import { COLOR_WHITE } from 'src/app/paint/services/paint.config';
 
 export class RectangleSelectAction extends DrawingToolAction {
   constructor(public override points: Point[], public override swapColors: boolean, public override renderIn: 'image' | 'preview' | 'nowhere') {
@@ -14,10 +13,10 @@ export class RectangleSelectAction extends DrawingToolAction {
 
   protected draw(points: Point[], color1: Color, color2: Color, image: ImageData, state: TsPaintStoreState) {
     if (this.renderIn === 'preview') {
-      drawRectangle({ start: points[0], end: points[1] }, COLOR_WHITE, image, this.getDashedLineStyle(state));
+      drawRectangle({ start: points[0], end: points[1] }, state.primaryColor, image, this.getDashedLineStyle(state));
     } else if (this.renderIn === 'image') {
       const area: RectangleArea = { start: points[0], end: points[1] };
-      fillAreaInOriginalImage(image, state.secondaryColor, area);
+      fillAreaInOriginalImage(image, state.primaryColor, area);
     }
   }
 

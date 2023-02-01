@@ -16,6 +16,7 @@ export class ToolboxComponent  {
     new EventEmitter<DrawingToolType>();
 
   selectTool(tool: DrawingToolType) {
+    console.log(tool);
     this.selectedToolChange.emit(tool);
   }
 

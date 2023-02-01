@@ -12,7 +12,7 @@ import { isDefined } from '../../helpers/typescript.helpers';
 })
 export class DrawingToolOptionsComponent implements OnChanges {
   @Input()
-  selectedTool: DrawingToolType = DrawingToolType.pencil;
+  selectedTool: DrawingToolType = DrawingToolType.rectangle;
   @Input()
   options!: DrawingToolOptions;
   @Output()
@@ -29,11 +29,13 @@ export class DrawingToolOptionsComponent implements OnChanges {
 
     if ([DrawingToolType.rectangle].includes(this.selectedTool as DrawingToolType)) {
       this.displayedPicker = 'fillTypePicker';
-      this.selectedFillType = this.options[6].fillType as FillType;
+      this.selectedFillType = this.options[6].fillType;
+      console.log(this.selectedFillType);
     }
   }
 
   changeSelectedFillType(fillType: FillType) {
+    console.log(fillType, fillType);
     const changes: Partial<DrawingToolOptions> = {};
 
     if ([DrawingToolType.rectangle].includes(this.selectedTool as DrawingToolType)) {
