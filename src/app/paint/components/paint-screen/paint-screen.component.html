@@ -1,52 +1,97 @@
-<div
-  fxLayout="column"
-  fxLayoutAlign="start stretch"
-  fxLayoutGap="gappx"
-  [fxShow]="true"
-  [fxHide]="false"
-  class="w-100 h-100"
+<app-modal-window
+  [title]="store.state.fileName + ' - Paint'"
+  [fullscreen]="true"
+  [icon]="'paint'"
 >
-  <!-- start of the toolbar  -->
-  <div
-    fxLayout="row"
-    fxLayoutAlign="start stretch"
-    fxLayoutGap="gappx"
-    class="w-100 "
-  >
-    <app-paint-toolbar class="w-100"></app-paint-toolbar>
-  </div>
-  <!-- end of the tool bar  -->
+  <div class="tsp-vertical-bar">
+    <!-- <div class="tsp-horizontal-bar">
+      <tsp-menu [menuStructure]="store.state.menuStructure" (itemSelected)="store.executeMenuAction($event.action)">
+      </tsp-menu>
+    </div> -->
 
-  <!-- secondry frame  -->
-  <div
-    fxLayout="row"
-    fxLayoutAlign="start stretch"
-    fxLayoutGap="gappx"
-    class="w-100 h-100"
-  >
-    <!-- side nav toolbar  -->
-    <div
-      fxLayout="column"
-      fxLayoutAlign="center stretch"
-      fxLayoutGap="gappx"
-      class="w-20 h-100"
-      fxFlex="15"
-    >
-      <app-paint-tools-sidebar></app-paint-tools-sidebar>
-    </div>
-    <!-- end of the side nav toolbar -->
+    <div class="tsp-horizontal-bar tsp-can-grow">
+      <div class="tsp-vertical-bar">
+        <app-toolbox
+          [selectedTool]="selectedToolType"
+          (selectedToolChange)="store.setDrawingTool($event)"
+        >
+        </app-toolbox>
+        <app-drawing-tool-options
+          [selectedTool]="selectedToolType"
+          [options]="store.state.drawingToolOptions"
+          (optionsChange)="store.setDrawingToolOptions($event)"
+        >
+        </app-drawing-tool-options>
+      </div>
 
-    <!-- paint  screen  -->
-    <div
-      fxLayout="column"
-      fxLayoutAlign="center end"
-      fxLayoutGap="gappx"
-      class="w-100 h-100 "
-      fxFlex="80"
-    >
-      <app-paint-section></app-paint-section>
+      <!-- start of the painting screen  -->
+      <div class="tsp-depressed-item-container tsp-vertical-bar tsp-can-grow">
+        <app-image-scroller
+          class="tsp-depressed-item tsp-can-grow"
+          [scrollPosition]="store.state.scrollPosition"
+          (contextmenu)="$event.preventDefault()"
+          (scrollPositionChange)="this.store.setScrollPosition($event)"
+          (viewportSizeChange)="this.store.setViewportSize($event)"
+        >
+          <div class="tsp-ts-paint__image-padding">
+            <app-zoomable-canvas
+              [zoom]="store.state.zoom"
+              [image]="store.state.image"
+              class="w-100 h-100"
+            ></app-zoomable-canvas>
+            <app-zoomable-canvas
+              [zoom]="store.state.zoom"
+              [image]="store.state.previewImage"
+              [parentImage]="store.state.image"
+              [offset]="store.state.previewOffset"
+              [invertBackground]="isInverted"
+            ></app-zoomable-canvas>
+            <app-zoomable-canvas
+              [zoom]="store.state.zoom"
+              [image]="store.state.selectionImage"
+              [parentImage]="store.state.image"
+              [offset]="store.state.selectionOffset"
+            ></app-zoomable-canvas>
+            <app-selection-frame
+              [ngStyle]="{
+                display: store.state.selectionImage ? 'block' : 'none'
+              }"
+              [zoom]="store.state.zoom"
+              [image]="store.state.selectionImage"
+              [parentImage]="store.state.image"
+              [offset]="store.state.selectionOffset"
+            ></app-selection-frame>
+            <app-mouse-tracker
+              class="w-100 h-100"
+              [zoom]="store.state.zoom"
+              [image]="store.state.image"
+              (mouseMove)="store.processMouseMove($event)"
+              (mouseDown)="store.processMouseDown($event)"
+              (mouseUp)="store.processMouseUp($event)"
+            >
+            </app-mouse-tracker>
+          </div>
+        </app-image-scroller>
+      </div>
+
+      <!-- end of the painting screen  -->
     </div>
-    <!-- end of the paint screen  -->
+
+    <div class="tsp-horizontal-bar">
+      <app-paint-color-pallet
+        [selectedPrimaryColor]="this.store.state.primaryColor"
+        [selectedSecondaryColor]="this.store.state.secondaryColor"
+        [availableColors]="this.store.state.availableColors"
+        (selectedColorChange)="this.store.setColor($event)"
+      >
+      </app-paint-color-pallet>
+    </div>
   </div>
-  <!-- end of the secondry frame  -->
-</div>
+</app-modal-window>
+
+<app-stretch-skew-window
+  *ngIf="store.state.stretchSkewWindowOpen"
+  (saveChanges)="this.store.stretchSkew($event)"
+  (cancel)="this.store.closeStretchSkewWindow()"
+>
+</app-stretch-skew-window>

@@ -25,7 +25,7 @@ export function simulateTextChange(oldText: string, event: KeyboardEvent | Clipb
       }
     }
   } else {
-    valueToInsert = event.clipboardData.getData('text/plain');
+    valueToInsert = event.clipboardData?.getData('text/plain') as string;
   }
 
   const newText: string = replaceStringBetweenIndexes(oldText, selectionStart, selectionEnd, valueToInsert);

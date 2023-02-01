@@ -20,20 +20,22 @@ export class TsPaintStoreState {
   previewOffset: Point = { w: 0, h: 0 };
   selectionImage! : ImageData ;
   selectionOffset: Point = { w: 0, h: 0 };
-  moveSelectionTool: MoveSelectionTool | undefined;
+  moveSelectionTool!: MoveSelectionTool ;
   fileName: string = 'untitled';
   primaryColor: Color = { r: 0, g: 0, b: 0 };
   secondaryColor: Color = COLOR_WHITE;
   availableColors: Color[] = DEFAULT_AVAILABLE_COLORS;
-  previewAction: TsPaintAction | undefined;
+  previewAction!: TsPaintAction ;
   actions: TsPaintAction[] = [];
-  selectedDrawingTool: DrawingTool | undefined;
+  selectedDrawingTool: DrawingTool | undefined ;
   drawingToolOptions: DrawingToolOptions = DEFAULT_DRAWING_TOOL_OPTIONS;
   undoPointer: number = -1;
   attributesWindowOpen: boolean = false;
   flipRotateWindowOpen: boolean = false;
   aboutPaintWindowOpen: boolean = false;
   stretchSkewWindowOpen: boolean = false;
-  mousePosition: Point | undefined;
+  mousePosition!: Point ;
   unsavedChanges: boolean = false;
+  menuStructure: any;
+  hiddenHotkeyShortcuts: any;
 }

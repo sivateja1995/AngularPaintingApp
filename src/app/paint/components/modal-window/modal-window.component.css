@@ -1,0 +1,75 @@
+:host(app-modal-window) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.tsp-modal-window__container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%,
+      -50%,
+      0px);
+  transform: translate(-50%, -50%);
+  background-color: var(--lighter-grey);
+}
+
+.tsp-modal-window__container--fullscreen {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  box-sizing: border-box;
+  transform: none;
+}
+
+.tsp-modal-window__inner-container {
+  padding: 1px;
+  display: flex;
+  flex-direction: column;
+}
+
+.tsp-modal-window__container--fullscreen .tsp-modal-window__inner-container {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.tsp-modal-window__title-bar {
+  width: 100%;
+  height: 18px;
+  background-color: var(--dark-blue);
+  text-shadow: 0px 0px white, 1px 0px white;
+  color: transparent;
+  letter-spacing: 1px;
+  padding: 2px;
+  box-sizing: border-box;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.tsp-modal-window__title-bar-icon {
+  display: block;
+  min-width: 16px;
+  width: 16px;
+  height: 16px;
+  margin-top: -1px;
+  margin-right: 3px;
+}
+
+.tsp-modal-window__title-bar-icon--paint {
+  background: url('../../../../assets/icons/paint.png') no-repeat center;
+}
+
+.tsp-modal-window__title-bar>button {
+  width: 15px;
+  background-color: var(--lighter-grey);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.tsp-modal-window__close-button {
+  background-image: url('../../../../assets/icons/close.png');
+}

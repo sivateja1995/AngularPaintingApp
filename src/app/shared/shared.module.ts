@@ -1,3 +1,4 @@
+import { TsPaintStore } from 'src/app/paint/services/paint.store';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '../MaterialModule';
@@ -22,6 +23,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     CommonModule
   ],
-  providers: []
+  providers: [TsPaintStore]
 })
 export class SharedModule { }

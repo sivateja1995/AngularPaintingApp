@@ -1,0 +1,5 @@
+:host(app-image-scroller) {
+  background-color: var(--grey);
+  position: relative;
+  overflow: auto;
+}

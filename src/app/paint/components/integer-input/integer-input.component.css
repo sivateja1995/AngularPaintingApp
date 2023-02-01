@@ -1,0 +1,7 @@
+:host(app-integer-input) {
+  display: flex;
+}
+
+.tsp-integer-input__input-container {
+  height: fit-content;
+}

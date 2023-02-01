@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, HostListener, Input, OnDestroy, OnInit, Output, Renderer2, ViewChild } from '@angular/core';
 import { Subject, debounceTime, takeUntil } from 'rxjs';
-import { Point } from '../types/base/point';
+import { Point } from '../../types/base/point';
+
 
 @Component({
   selector: 'app-paint-section',

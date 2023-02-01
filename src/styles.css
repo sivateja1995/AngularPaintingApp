@@ -18,108 +18,182 @@
   --error-container: #f9dedc;
   --surface: #fffbfe;
   --surface-varient: #e7e0ec;
+  --lightest-grey: #e1e3e5;
+  --lighter-grey: #c3c7cb;
+  --grey: #868a8e;
+  --dark-blue: #0000aa;
 }
 
-html,
+@font-face {
+  font-family: 'Windows95';
+  src: url('assets/fonts/win95.woff2') format('woff2'), url('assets/fonts/win95.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-  height: 100% !important;
-  background-color: var(--background) !important;
+  font-family: Windows95;
+  font-size: 8px;
+  margin: 0px;
+  color: black;
 }
 
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+button {
+  font: inherit;
 }
 
-/* width and height classess  */
-.w-100 {
-  width: 100% !important;
+input {
+  font: inherit;
 }
 
-.h-100 {
-  height: 100% !important;
+.tsp-can-grow {
+  flex-grow: 1;
 }
 
-
-
-.h-90 {
-  height: 90% !important;
+.tsp-horizontal-bar {
+  display: flex;
+  width: 100%;
 }
 
-.w-90 {
-  width: 90% !important;
+.tsp-vertical-bar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
-.h-80 {
-  height: 80% !important;
+.tsp-raised-item-container {
+  border: 1px solid;
+  border-color: var(--lighter-grey) black black var(--lighter-grey);
 }
 
-.w-80 {
-  width: 80% !important;
+.tsp-raised-item {
+  border: 1px solid;
+  border-color: white var(--grey) var(--grey) white;
 }
 
-.w-5rem {
-  width: 5rem !important;
+.tsp-depressed-item-container {
+  border: 1px solid;
+  border-color: var(--grey) white white var(--grey);
 }
 
-.h-5rem {
-  height: 5rem !important;
+.tsp-depressed-item {
+  border: 1px solid;
+  border-color: black var(--lighter-grey) var(--lighter-grey) black;
 }
 
-.w-50 {
-  width: 50% !important;
+hr {
+  border: 1px solid;
+  border-color: var(--grey) white white var(--grey);
 }
 
-.h-50 {
-  height: 50% !important;
+fieldset {
+  border: 1px solid var(--grey);
+  padding: 3px;
+  position: relative;
 }
 
-.w-20 {
-  width: 20% !important;
+fieldset legend {
+  position: relative;
+  background-color: var(--lighter-grey);
 }
 
-.h-20 {
-  height: 20% !important;
+fieldset::before {
+  content: ' ';
+  position: absolute;
+  top: 6px;
+  left: 0px;
+  right: -2px;
+  bottom: -2px;
+  border: 1px solid white;
+  z-index: -1;
 }
 
-
-.primary {
-  background-color: var(--primar) !important;
+.tsp-button {
+  position: relative;
+  background-color: var(--lighter-grey);
+  margin: 0px 1px 1px 0px;
+  outline: none;
 }
 
-.on-primary {
-  color: var(--on-primary) !important;
+div.tsp-button {
+  margin: 0px 1px -1px 0px;
+  box-sizing: border-box;
 }
 
-.secondary {
-  background-color: var(--secondry) !important;
+.tsp-button::before {
+  content: ' ';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: -2px;
+  bottom: -2px;
+  border: solid black;
+  border-width: 0px 1px 1px 0px;
 }
 
-.onSecondary {
-  color: var(--on-secondary) !important;
+.tsp-button:active {
+  background-position: calc(50% + 1px) calc(50% + 1px) !important;
+  border-color: var(--grey) var(--lighter-grey) var(--lighter-grey) var(--grey);
 }
 
-
-.boundary {
-  background-color: var(--outline) !important;
+.tsp-button:active::before {
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-width: 1px;
+  border-color: black white white black;
 }
 
-
-.teriatry {
-  background-color: var(--tertiary);
+.tsp-text-button {
+  padding: 2px 0px 3px 0px;
+  margin-left: 12px;
+  margin-bottom: 6px;
+  min-width: 72px;
 }
 
-
-.material-symbols-outlined {
-  font-variation-settings:
-    'FILL' 0,
-    'wght' 100,
-    'GRAD' -25,
-    'opsz' 48
+.tsp-input-label {
+  margin: 4px 4px 0 12px;
 }
 
+.tsp-input-label--after-field {
+  margin-left: 6px;
+}
 
-.icon{
-  width: 24px !important;
-  height: 24px !important;
+.tsp-text-input {
+  padding-bottom: 5px;
+  padding-left: 2px;
+  outline: none;
+}
+
+.tsp-radio-button {
+  position: relative;
+  margin-right: 18px;
+  width: 0px;
+  height: 0px;
+}
+
+.tsp-radio-button::before {
+  content: ' ';
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  background-image: url('./assets/ui/radio-unchecked.png');
+  top: -2px;
+}
+
+.tsp-radio-button:checked::before {
+  background-image: url('./assets/ui/radio-checked.png');
+}
+
+.tsp-radio-button[disabled]::before {
+  background-image: url('./assets/ui/radio-disabled-unchecked.png');
+}
+
+.tsp-radio-button[disabled]:checked::before {
+  background-image: url('./assets/ui/radio-disabled-checked.png');
+}
+
+[disabled] {
+  color: var(--grey);
 }
