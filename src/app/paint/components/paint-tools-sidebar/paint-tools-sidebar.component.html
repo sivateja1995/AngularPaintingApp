@@ -1,73 +1,13 @@
-<mat-card class="sidenav w-80">
-  <mat-card-content>
-    <mat-form-field class="w-100" appearance="outline">
-      <mat-label>select color</mat-label>
-      <input
-        matInput
-        type="color"
-        [(ngModel)]="color"
-        (change)="colorChange()"
-      />
-    </mat-form-field>
-    <!--
-    <mat-form-field class="w-100" appearance="outline" >
-      <mat-label>select Width</mat-label>
-      <input matInput type="number" min="1"    [(ngModel)]="width" (change)="widthChange()" />
-    </mat-form-field> -->
-
-    <!-- tools & size  -->
-
-    <!-- tools  -->
-    <div class="grid-container">
-      <div>
-        <mat-icon class="material-symbols-outlined">format_paint</mat-icon>
-      </div>
-      <div>
-        <img src="/assets/images/eraser-solid.svg" alt="eraser" class="icon" />
-      </div>
-      <div>
-        <mat-icon class="material-symbols-outlined">format_color_fill</mat-icon>
-      </div>
-      <div>
-        <mat-icon class="material-symbols-outlined line"
-          >horizontal_rule</mat-icon
-        >
-      </div>
-      <div><mat-icon class="material-symbols-outlined">circle</mat-icon></div>
-      <div>
-        <mat-icon class="material-symbols-outlined">rectangle</mat-icon>
-      </div>
-      <div><mat-icon class="material-symbols-outlined">gesture</mat-icon></div>
-      <div><img src="/assets/images/sprinkler.svg" class="icon" /></div>
-      <div>
-        <mat-icon class="material-symbols-outlined">pan_tool_alt</mat-icon>
-      </div>
-    </div>
-    <!-- end of the tools  -->
-
-    <!-- size  -->
-    <div class="grid-size-container">
-      <div (click)="widthChange('4')">
-        <div class="size-4" (click)="widthChange('4')"></div>
-      </div>
-      <div>
-        <div class="size-8" (click)="widthChange('8')"></div>
-      </div>
-      <div>
-        <div class="size-16" (click)="widthChange('16')"></div>
-      </div>
-      <div>
-        <div class="size-32" (click)="widthChange('32')"></div>
-      </div>
-    </div>
-
-    <!-- end of the size  -->
-
-    <!-- end of the tools & size  -->
-
-    <!-- button  -->
-    <button mat-raised-button color="primary" class="w-100 save">save</button>
-    <button mat-raised-button class="accent" class="w-100 clear">clear</button>
-    <!-- end of the buttons  -->
-  </mat-card-content>
-</mat-card>
+<div class="tsp-vertical-bar">
+  <app-toolbox  
+    [selectedTool]="selectedToolType"
+    (selectedToolChange)="store.setDrawingTool($event)"
+  >
+  </app-toolbox>
+  <app-drawing-tool-options
+    [selectedTool]="selectedToolType"
+    [options]="store.state.drawingToolOptions"
+    (optionsChange)="store.setDrawingToolOptions($event)"
+  >
+  </app-drawing-tool-options>
+</div>

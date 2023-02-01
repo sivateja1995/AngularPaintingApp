@@ -1,0 +1,2 @@
+<div *ngFor="let fillType of availableFillTypes" class="tsp-fill-type-picker__option" [ngClass]="getNgClass(fillType)"
+  (click)="selectFillType(fillType)"></div>
