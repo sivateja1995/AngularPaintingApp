@@ -2,7 +2,7 @@
 
 :root {
   --background: #fffbfe81;
-  --primar: #6750a4;
+  --primary: #6750a4;
   --secondry: #625b71;
   --tertiary: #7d5260;
   --error: #b3261e;
@@ -24,15 +24,10 @@
   --dark-blue: #0000aa;
 }
 
-@font-face {
-  font-family: 'Windows95';
-  src: url('assets/fonts/win95.woff2') format('woff2'), url('assets/fonts/win95.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
+
 
 body {
-  font-family: Windows95;
+  font-family:'Courier New', Courier, monospace;
   font-size: 8px;
   margin: 0px;
   color: black;
@@ -40,6 +35,10 @@ body {
 
 button {
   font: inherit;
+}
+
+.primary-bg{
+  background-color: var(--primary) !important;
 }
 
 input {
@@ -178,21 +177,9 @@ div.tsp-button {
   width: 12px;
   height: 12px;
   position: absolute;
-  background-image: url('./assets/ui/radio-unchecked.png');
   top: -2px;
 }
 
-.tsp-radio-button:checked::before {
-  background-image: url('./assets/ui/radio-checked.png');
-}
-
-.tsp-radio-button[disabled]::before {
-  background-image: url('./assets/ui/radio-disabled-unchecked.png');
-}
-
-.tsp-radio-button[disabled]:checked::before {
-  background-image: url('./assets/ui/radio-disabled-checked.png');
-}
 
 [disabled] {
   color: var(--grey);

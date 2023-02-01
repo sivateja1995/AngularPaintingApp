@@ -30,7 +30,6 @@ export function drawRectangle(
 ) {
   const corner2: Point = { w: corner1.w, h: corner3.h };
   const corner4: Point = { w: corner3.w, h: corner1.h };
-  console.log('drawing the rectangle.',color)
   if (!isDefined(drawLineFunction)) {
     drawLineFunction = drawLine;
   } else {

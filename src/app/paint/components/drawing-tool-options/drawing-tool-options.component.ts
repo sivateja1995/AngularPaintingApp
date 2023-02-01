@@ -29,7 +29,7 @@ export class DrawingToolOptionsComponent implements OnChanges {
 
     if ([DrawingToolType.rectangle].includes(this.selectedTool as DrawingToolType)) {
       this.displayedPicker = 'fillTypePicker';
-      this.selectedFillType = this.options[6].fillType;
+      this.selectedFillType = this.options[DrawingToolType.rectangle].fillType;
       console.log(this.selectedFillType);
     }
   }
@@ -40,7 +40,7 @@ export class DrawingToolOptionsComponent implements OnChanges {
 
     if ([DrawingToolType.rectangle].includes(this.selectedTool as DrawingToolType)) {
       if (isDefined(this.selectedTool)) {
-        changes[6] = { fillType };
+        changes[DrawingToolType.rectangle] = { fillType };
       }
     }
 
