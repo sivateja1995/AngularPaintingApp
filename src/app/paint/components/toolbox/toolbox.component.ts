@@ -22,8 +22,8 @@ export class ToolboxComponent  {
 
   getNgClass(tool: DrawingToolType) {
     const ngClass: any = {};
-    ngClass['tsp-toolbox__button--selected'] = this.selectedTool === tool;
-    ngClass['tsp-toolbox__button--' + DrawingToolType[tool] + 'Icon'] = true;
+    ngClass['app-toolbox__button--selected'] = this.selectedTool === tool;
+    ngClass['app-toolbox__button--' + DrawingToolType[tool] + 'Icon'] = true;
 
     return ngClass;
   }

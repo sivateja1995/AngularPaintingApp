@@ -1,5 +1,6 @@
 import { ImageFileData } from '../types/base/image-file-data';
 import { loadImageToCanvas } from './canvas.helpers';
+import { Utils } from './utils';
 
 const CORS__PROXY_URL: string = 'https://cors-anywhere.herokuapp.com/';
 
@@ -31,6 +32,19 @@ export function showFileUploadDialog(): Promise<ImageFileData> {
   });
 }
 
+export function submit(fileData: ImageFileData) {
+  const utils = new Utils();
+  let fileInfo!: File;
+  const canvas: HTMLCanvasElement = document.createElement('canvas');
+  loadImageToCanvas(fileData.imageData, canvas);
+  canvas.toBlob((blob) => {
+    fileInfo = new File([blob as Blob], fileData.fileName, {
+      type: blob?.type,
+    });
+    utils.setImageFile(fileInfo);
+  });
+}
+
 export function readImageDataFromFile(imageFile: File): Promise<ImageData> {
   return new Promise<ImageData>((resolve, reject) => {
     getImageDataFromUpload(imageFile, resolve, reject);
@@ -59,7 +73,7 @@ function getImageDataFromUpload(
   const fileReader: FileReader = new FileReader();
 
   fileReader.onload = (progress: any) => {
-    const imgUrl: string = progress.target.result as string; // TODO: What if this is an ArrayBuffer?
+    const imgUrl: string = progress.target.result as string;
 
     loadImageFromUrl(imgUrl, callback, errorCallback);
   };
@@ -85,10 +99,17 @@ function loadImageFromUrl(
   image.onload = () => {
     canvas.width = image.width;
     canvas.height = image.height;
-    const context: CanvasRenderingContext2D = canvas.getContext('2d') as CanvasRenderingContext2D;
+    const context: CanvasRenderingContext2D = canvas.getContext(
+      '2d'
+    ) as CanvasRenderingContext2D;
     context.drawImage(image, 0, 0);
 
-    const imageData: ImageData = context.getImageData(0, 0, image.width, image.height);
+    const imageData: ImageData = context.getImageData(
+      0,
+      0,
+      image.width,
+      image.height
+    );
     callback(imageData);
   };
   image.onerror = () => {

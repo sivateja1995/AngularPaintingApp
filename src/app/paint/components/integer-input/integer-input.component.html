@@ -1,6 +1,6 @@
-<label class="tsp-input-label tsp-can-grow">{{ label }}</label>
-<div class="tsp-depressed-item-container tsp-integer-input__input-container">
-  <input #inputElement type="text" class="tsp-text-input tsp-depressed-item" [(ngModel)]="model"
+<label class="app-input-label app-can-grow">{{ label }}</label>
+<div class="app-depressed-item-container app-integer-input__input-container">
+  <input #inputElement type="text" class="app-text-input app-depressed-item" [(ngModel)]="model"
     [attr.disabled]="disabled ? '' : null" (paste)="onPaste($event)" (keydown)="onKeydown($event)" />
 </div>
-<label class="tsp-input-label tsp-input-label--after-field">{{ unit }}</label>
+<label class="app-input-label app-input-label--after-field">{{ unit }}</label>

@@ -1,11 +1,13 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TsPaintStore} from 'src/app/paint/services/paint.store'
+import { TsPaintStore } from 'src/app/paint/services/paint.store';
 import { isDefined } from '../../helpers/typescript.helpers';
 import { DrawingToolType } from '../../types/drawing-tools/drawing-tool-type';
 import { DrawingTool } from '../../types/drawing-tools/drawing-tool';
 import { MenuItem } from '../../types/menu/menu-item';
 import { MenuActionType } from '../../types/menu/menu-action-type';
+import { Utils } from '../../helpers/utils';
+import { PaintService } from '../../services/paint.service';
 
 @Component({
   selector: 'app-paint-screen',
@@ -13,10 +15,12 @@ import { MenuActionType } from '../../types/menu/menu-action-type';
   styleUrls: ['./paint-screen.component.css'],
 })
 export class PaintScreenComponent implements OnInit {
-  public menuItem! : MenuItem 
+  public menuItem!: MenuItem;
   constructor(
     public store: TsPaintStore,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private utils: Utils,
+    private paintService: PaintService
   ) {
     this.activatedRoute.queryParams.subscribe((params) => {
       if (isDefined(params['imageUrl'])) {
@@ -52,8 +56,6 @@ export class PaintScreenComponent implements OnInit {
     this.store.loadFile(pastedFile);
   }
 
-
-
   @HostListener('window:beforeunload', ['$event'])
   beforeunload(event: any) {
     if (this.store.state.unsavedChanges) {
@@ -70,9 +72,8 @@ export class PaintScreenComponent implements OnInit {
     return (this.store.state.selectedDrawingTool as DrawingTool).type;
   }
 
-
   // funcitons for save and clear
-  public save(data:Event) {
+  public save(data: Event) {
     this.store.executeMenuAction(MenuActionType.SAVE_FILE);
   }
 
@@ -80,13 +81,22 @@ export class PaintScreenComponent implements OnInit {
     this.store.executeMenuAction(MenuActionType.CLEAR_IMAGE);
   }
 
-  // funmcitons for undo & Redo 
+  // funmcitons for undo & Redo
   public undo() {
-    this.store.executeMenuAction(MenuActionType.UNDO)
+    this.store.executeMenuAction(MenuActionType.UNDO);
   }
 
   public redo() {
     this.store.executeMenuAction(MenuActionType.REPEAT);
   }
 
+  public submit() {
+    this.store.executeMenuAction(MenuActionType.SUBMIT);
+    if (!!this.utils.getImageFile()) {
+      const imageFile = this.utils.getImageFile();
+      this.paintService.saveImage(imageFile).subscribe((res) => {
+        console.log(res);
+      });
+    }
+  }
 }

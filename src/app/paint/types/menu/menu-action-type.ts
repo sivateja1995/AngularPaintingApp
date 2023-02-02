@@ -16,4 +16,5 @@ export enum MenuActionType {
   CLEAR_SELECTION,
   DESELECT,
   ABOUT_PAINT,
+  SUBMIT
 }

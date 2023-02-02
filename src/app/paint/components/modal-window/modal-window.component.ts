@@ -22,7 +22,7 @@ export class ModalWindowComponent implements OnChanges {
 
   ngOnChanges(): void {
     if (this.icon === 'paint') {
-      this.iconClass = { 'tsp-modal-window__title-bar-icon--paint': true };
+      this.iconClass = { 'app-modal-window__title-bar-icon--paint': true };
     } else {
       this.iconClass = {};
     }

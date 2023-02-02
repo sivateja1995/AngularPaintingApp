@@ -1,4 +1,4 @@
-.tsp-palette__color-selector {
+.app-palette__color-selector {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -6,28 +6,28 @@
   margin: 9px 4px 9px;
 }
 
-.tsp-palette__selected-color-container {
+.app-palette__selected-color-container {
   border: 1px solid #c3c7cb;
 }
 
-.tsp-palette__color-button {
+.app-palette__color-button {
   width: 12px;
   height: 12px;
   padding: 0px;
 }
 
-.tsp-palette__color-sample {
+.app-palette__color-sample {
   width: 11px;
   height: 11px;
 }
 
-.tsp-palette__color-sample-container {
+.app-palette__color-sample-container {
   width: 13px;
   height: 13px;
   position: absolute;
 }
 
-.tsp-palette__selected-colors-parent {
+.app-palette__selected-colors-parent {
   width: 27px;
   height: 28px;
   padding: 0px;

@@ -2,11 +2,11 @@
   position: absolute;
 }
 
-.tsp-zoomable-canvas__canvas {
+.app-zoomable-canvas__canvas {
   image-rendering: pixelated;
   position: absolute;
 }
 
-.tsp-zoomable-canvas__canvas--invert_background {
+.app-zoomable-canvas__canvas--invert_background {
   mix-blend-mode: difference;
 }

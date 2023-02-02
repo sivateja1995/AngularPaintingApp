@@ -2,6 +2,6 @@
   display: flex;
 }
 
-.tsp-integer-input__input-container {
+.app-integer-input__input-container {
   height: fit-content;
 }
