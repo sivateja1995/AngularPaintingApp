@@ -29,6 +29,7 @@ import {
   readImageDataFromFile,
   getFileNameWithoutExtension,
   readImageDataFromUrl,
+  submit,
 } from '../../paint/helpers/image-file.helpers';
 import { ResizeImageAction } from '../../paint/types/actions/resize-image-action';
 import { findMenuActionTypeByHotkeyEvent } from 'src/app/paint/types/menu/menu-hotkey.helpers';
@@ -196,7 +197,7 @@ export class TsPaintStore extends Store<TsPaintStoreState> {
     this.patchState(viewportSize, 'viewportSize');
   }
 
-  ////////////////////////////// Menu actions //////////////////////////////
+  // Menu actions //
 
   executeMenuAction(menuAction: MenuActionType) {
     const menuActionFunction: () => void =
@@ -240,6 +241,8 @@ export class TsPaintStore extends Store<TsPaintStoreState> {
         return this.deselectIfSelected.bind(this);
       case MenuActionType.ABOUT_PAINT:
         return this.aboutPaint.bind(this);
+      case MenuActionType.SUBMIT:
+        return this.submit.bind(this)
     }
 
     assertUnreachable(menuAction);
@@ -259,6 +262,13 @@ export class TsPaintStore extends Store<TsPaintStoreState> {
   private saveFile() {
     this.deselectIfSelected();
     saveFile({ imageData: this.state.image, fileName: this.state.fileName });
+    this.patchState(false, 'unsavedChanges');
+  }
+
+
+  private submit() {
+    this.deselectIfSelected();
+    submit({ imageData: this.state.image, fileName: this.state.fileName });
     this.patchState(false, 'unsavedChanges');
   }
 

@@ -13,6 +13,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconTestingModule } from '@angular/material/icon/testing';
+import { MatButtonToggleModule } from '@angular/material/button-toggle'; 
+
 
 
 
@@ -34,7 +36,8 @@ import { MatIconTestingModule } from '@angular/material/icon/testing';
     MatSidenavModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconTestingModule
+    MatIconTestingModule,
+    MatButtonToggleModule,
   ],
   exports: [
     MatButtonModule,
@@ -50,7 +53,8 @@ import { MatIconTestingModule } from '@angular/material/icon/testing';
     MatSidenavModule,
     MatFormFieldModule,
     MatInputModule,
-    MatIconTestingModule
+    MatIconTestingModule,
+    MatButtonToggleModule,
   ],
 })
-export class MaterialModule { }
+export class MaterialModule {}

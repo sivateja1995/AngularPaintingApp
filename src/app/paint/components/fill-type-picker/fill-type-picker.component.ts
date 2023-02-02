@@ -21,9 +21,9 @@ export class FillTypePickerComponent {
 
   getNgClass(fillType: FillType) {
     const ngClass: any = {};
-    ngClass['tsp-fill-type-picker__option--selected'] =
+    ngClass['app-fill-type-picker__option--selected'] =
       this.selectedFillType === fillType;
-    ngClass['tsp-fill-type-picker__option--' + FillType[fillType] + 'Icon'] =
+    ngClass['app-fill-type-picker__option--' + FillType[fillType] + 'Icon'] =
       true;
 
     return ngClass;

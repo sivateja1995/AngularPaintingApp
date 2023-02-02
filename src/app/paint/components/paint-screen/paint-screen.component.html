@@ -1,39 +1,55 @@
-<app-modal-window
-  [fullscreen]="true"
->
-  <div class="tsp-vertical-bar">
-     <div class="primary">
+<app-modal-window [fullscreen]="true">
+  <div class="app-vertical-bar">
+    <div class="primary">
       <app-paint-toolbar></app-paint-toolbar>
-    </div> 
+    </div>
 
-    <div class="tsp-horizontal-bar tsp-can-grow">
-      <div class="tsp-vertical-bar">
-        
-          <app-toolbox
-            class="grid"
-            [selectedTool]="selectedToolType"
-            (selectedToolChange)="store.setDrawingTool($event)"
-          >
-          </app-toolbox>
-   
+    <div class="app-horizontal-bar app-can-grow">
+      <div class="app-vertical-bar w-8">
+        <app-toolbox
+          class="grid"
+          [selectedTool]="selectedToolType"
+          (selectedToolChange)="store.setDrawingTool($event)"
+        >
+        </app-toolbox>
+
         <app-drawing-tool-options
           [selectedTool]="selectedToolType"
           [options]="store.state.drawingToolOptions"
           (optionsChange)="store.setDrawingToolOptions($event)"
         >
         </app-drawing-tool-options>
+
+        <div class="app-vertical-bar h-8">
+          <button
+            mat-raised-button
+            color="primary"
+            class="w-20 save"
+            (click)="save($event)"
+          >
+            save
+          </button>
+          <button
+            mat-raised-button
+            color="accent"
+            class="w-20 clear"
+            (click)="clear($event)"
+          >
+            clear
+          </button>
+        </div>
       </div>
 
       <!-- start of the painting screen  -->
-      <div class="tsp-depressed-item-container tsp-vertical-bar tsp-can-grow">
+      <div class="app-depressed-item-container app-vertical-bar app-can-grow">
         <app-image-scroller
-          class="tsp-depressed-item tsp-can-grow"
+          class="app-depressed-item app-can-grow"
           [scrollPosition]="store.state.scrollPosition"
           (contextmenu)="$event.preventDefault()"
           (scrollPositionChange)="this.store.setScrollPosition($event)"
           (viewportSizeChange)="this.store.setViewportSize($event)"
         >
-          <div class="tsp-ts-paint__image-padding">
+          <div class="app-ts-paint__image-padding">
             <app-zoomable-canvas
               [zoom]="store.state.zoom"
               [image]="store.state.image"
@@ -74,10 +90,28 @@
         </app-image-scroller>
       </div>
 
+      <div
+        class="app-depressed-item-container app-vertical-bar"
+      >
+        <!--start of do & undo button  -->
+        <mat-button-toggle-group>
+          <mat-button-toggle (click)="undo()" matTooltip="undo">
+            <mat-icon class="btn">undo</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle (click)="redo()" matTooltip="redo">
+            <mat-icon class="btn">redo</mat-icon>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+        <!-- end of do & undo button  -->
+        <div class="app-vertical-bar">
+          <button mat-raised-button class="btn" color="primary" (click)="submit()">Submit</button>
+        </div>
+      </div>
+     
       <!-- end of the painting screen  -->
     </div>
 
-    <div class="tsp-horizontal-bar">
+    <div class="app-horizontal-bar">
       <app-paint-color-pallet
         [selectedPrimaryColor]="this.store.state.primaryColor"
         [selectedSecondaryColor]="this.store.state.secondaryColor"

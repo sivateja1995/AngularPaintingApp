@@ -23,7 +23,7 @@ export class TsPaintStoreState {
   moveSelectionTool!: MoveSelectionTool ;
   fileName: string = 'untitled';
   primaryColor: Color = { r: 0, g: 0, b: 0 };
-  secondaryColor: Color = {r:0,g:0,b:0};
+  secondaryColor: Color = COLOR_WHITE;
   availableColors: Color[] = DEFAULT_AVAILABLE_COLORS;
   previewAction!: TsPaintAction ;
   actions: TsPaintAction[] = [];

@@ -1,12 +1,12 @@
-<div class="tsp-modal-window__container tsp-raised-item-container"
-  [ngClass]="{ 'tsp-modal-window__container--fullscreen': fullscreen }">
-  <div class="tsp-modal-window__inner-container tsp-raised-item">
-    <div class="tsp-modal-window__title-bar tsp-horizontal-bar">
-      <div class="tsp-modal-window__title-bar-icon" *ngIf="this.icon" [ngClass]="iconClass"></div>
-      <div class="tsp-can-grow">
+<div class="app-modal-window__container app-raised-item-container"
+  [ngClass]="{ 'app-modal-window__container--fullscreen': fullscreen }">
+  <div class="app-modal-window__inner-container app-raised-item">
+    <div class="app-modal-window__title-bar app-horizontal-bar">
+      <div class="app-modal-window__title-bar-icon" *ngIf="this.icon" [ngClass]="iconClass"></div>
+      <div class="app-can-grow">
         {{ title }}
       </div>
-      <button *ngIf="closable" class="tsp-button tsp-modal-window__close-button" (click)="closeClicked.emit()"></button>
+      <button *ngIf="closable" class="app-button app-modal-window__close-button" (click)="closeClicked.emit()"></button>
     </div>
     <ng-content></ng-content>
   </div>

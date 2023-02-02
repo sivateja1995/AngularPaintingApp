@@ -5,20 +5,20 @@
   (keyup.enter)="okClicked()"
   (keyup.escape)="cancel.emit()"
 >
-  <div class="tsp-horizontal-bar tsp-stretch-skew-window__container">
-    <div class="tsp-vertical-bar">
-      <div class="tsp-vertical-bar">
-        <fieldset class="tsp-stretch-skew-window__fieldset">
+  <div class="app-horizontal-bar app-stretch-skew-window__container">
+    <div class="app-vertical-bar">
+      <div class="app-vertical-bar">
+        <fieldset class="app-stretch-skew-window__fieldset">
           <legend>Stretch</legend>
           <div
-            class="tsp-horizontal-bar tsp-stretch-skew-window__input-with-icon"
+            class="app-horizontal-bar app-stretch-skew-window__input-with-icon"
           >
             <div
-              class="tsp-stretch-skew-window__big-icon tsp-stretch-skew-window__big-icon--stretch-horizontal"
+              class="app-stretch-skew-window__big-icon app-stretch-skew-window__big-icon--stretch-horizontal"
             ></div>
             <app-integer-input
               #stretchHorizontalInput
-              class="tsp-stretch-skew-window__number_input tsp-can-grow"
+              class="app-stretch-skew-window__number_input app-can-grow"
               [label]="'Horizontal:'"
               [unit]="'%'"
               [maxValue]="1600"
@@ -27,13 +27,13 @@
             </app-integer-input>
           </div>
           <div
-            class="tsp-horizontal-bar tsp-stretch-skew-window__input-with-icon"
+            class="app-horizontal-bar app-stretch-skew-window__input-with-icon"
           >
             <div
-              class="tsp-stretch-skew-window__big-icon tsp-stretch-skew-window__big-icon--stretch-vertical"
+              class="app-stretch-skew-window__big-icon app-stretch-skew-window__big-icon--stretch-vertical"
             ></div>
             <app-integer-input
-              class="tsp-stretch-skew-window__number_input tsp-can-grow"
+              class="app-stretch-skew-window__number_input app-can-grow"
               [label]="'Vertical:'"
               [unit]="'%'"
               [maxValue]="1600"
@@ -44,11 +44,11 @@
         </fieldset>
       </div>
     </div>
-    <div class="tsp-vertical-bar">
-      <button class="tsp-button tsp-text-button" (click)="okClicked()">
+    <div class="app-vertical-bar">
+      <button class="app-button app-text-button" (click)="okClicked()">
         OK
       </button>
-      <button class="tsp-button tsp-text-button" (click)="cancel.emit()">
+      <button class="app-button app-text-button" (click)="cancel.emit()">
         Cancel
       </button>
     </div>

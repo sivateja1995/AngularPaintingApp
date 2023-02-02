@@ -44,10 +44,10 @@ export const DRAWING_TOOL_CONFIG: { [key in DrawingToolType]: DrawingToolConfig 
     ...DRAWING_TOOL_CONFIG_DEFAULTS,
     actionClass: ColorFillerAction,
   },
-  [DrawingToolType.colorPicker]: {
-    ...DRAWING_TOOL_CONFIG_DEFAULTS,
-    actionClass: ColorPickerAction,
-  },
+  // [DrawingToolType.colorPicker]: {
+  //   ...DRAWING_TOOL_CONFIG_DEFAULTS,
+  //   actionClass: ColorPickerAction,
+  // },
   // [DrawingToolType.magnifier]: {
   //   ...DRAWING_TOOL_CONFIG_DEFAULTS,
   //   behaviour: DrawingToolBehaviour.SINGLE_POINT_WITH_PREVIEW,
