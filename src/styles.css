@@ -27,7 +27,7 @@
 
 
 body {
-  font-family:'Courier New', Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
   font-size: 8px;
   margin: 0px;
   color: black;
@@ -37,7 +37,7 @@ button {
   font: inherit;
 }
 
-.primary-bg{
+.primary-bg {
   background-color: var(--primary) !important;
 }
 
@@ -66,8 +66,10 @@ input {
 }
 
 .tsp-raised-item {
-  border: 1px solid;
+  border: 1px solid var(--outline);
+  background: var(--primary-container);
   border-color: white var(--grey) var(--grey) white;
+
 }
 
 .tsp-depressed-item-container {

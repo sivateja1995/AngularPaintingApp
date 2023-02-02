@@ -1,27 +1,43 @@
-<app-modal-window
-  [fullscreen]="true"
->
+<app-modal-window [fullscreen]="true">
   <div class="tsp-vertical-bar">
-     <div class="primary">
+    <div class="primary">
       <app-paint-toolbar></app-paint-toolbar>
-    </div> 
+    </div>
 
     <div class="tsp-horizontal-bar tsp-can-grow">
-      <div class="tsp-vertical-bar">
-        
-          <app-toolbox
-            class="grid"
-            [selectedTool]="selectedToolType"
-            (selectedToolChange)="store.setDrawingTool($event)"
-          >
-          </app-toolbox>
-   
+      <div class="tsp-vertical-bar w-8">
+        <app-toolbox
+          class="grid"
+          [selectedTool]="selectedToolType"
+          (selectedToolChange)="store.setDrawingTool($event)"
+        >
+        </app-toolbox>
+
         <app-drawing-tool-options
           [selectedTool]="selectedToolType"
           [options]="store.state.drawingToolOptions"
           (optionsChange)="store.setDrawingToolOptions($event)"
         >
         </app-drawing-tool-options>
+
+        <div class="tsp-vertical-bar h-8">
+          <button
+            mat-raised-button
+            color="primary"
+            class="w-20 save"
+            (click)="save($event)"
+          >
+            save
+          </button>
+          <button
+            mat-raised-button
+            color="accent"
+            class="w-20 clear"
+            (click)="clear($event)"
+          >
+            clear
+          </button>
+        </div>
       </div>
 
       <!-- start of the painting screen  -->
@@ -74,6 +90,24 @@
         </app-image-scroller>
       </div>
 
+      <div
+        class="tsp-depressed-item-container tsp-vertical-bar"
+      >
+        <!--start of do & undo button  -->
+        <mat-button-toggle-group>
+          <mat-button-toggle (click)="undo()" matTooltip="undo">
+            <mat-icon class="btn">undo</mat-icon>
+          </mat-button-toggle>
+          <mat-button-toggle (click)="redo()" matTooltip="redo">
+            <mat-icon class="btn">redo</mat-icon>
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+        <!-- end of do & undo button  -->
+        <div class="tsp-vertical-bar">
+          <button mat-raised-button class="btn" color="primary">Submit</button>
+        </div>
+      </div>
+     
       <!-- end of the painting screen  -->
     </div>
 

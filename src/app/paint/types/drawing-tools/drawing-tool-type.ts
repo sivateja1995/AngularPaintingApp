@@ -3,7 +3,7 @@ export enum DrawingToolType {
   rectangleSelect,
   /*eraser,*/
   colorFiller,
-  colorPicker,
+  // colorPicker,
   // magnifier,
   pencil,
   /*brush,

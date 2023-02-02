@@ -4,6 +4,8 @@ import { TsPaintStore} from 'src/app/paint/services/paint.store'
 import { isDefined } from '../../helpers/typescript.helpers';
 import { DrawingToolType } from '../../types/drawing-tools/drawing-tool-type';
 import { DrawingTool } from '../../types/drawing-tools/drawing-tool';
+import { MenuItem } from '../../types/menu/menu-item';
+import { MenuActionType } from '../../types/menu/menu-action-type';
 
 @Component({
   selector: 'app-paint-screen',
@@ -11,6 +13,7 @@ import { DrawingTool } from '../../types/drawing-tools/drawing-tool';
   styleUrls: ['./paint-screen.component.css'],
 })
 export class PaintScreenComponent implements OnInit {
+  public menuItem! : MenuItem 
   constructor(
     public store: TsPaintStore,
     private activatedRoute: ActivatedRoute
@@ -66,4 +69,24 @@ export class PaintScreenComponent implements OnInit {
   get selectedToolType(): DrawingToolType {
     return (this.store.state.selectedDrawingTool as DrawingTool).type;
   }
+
+
+  // funcitons for save and clear
+  public save(data:Event) {
+    this.store.executeMenuAction(MenuActionType.SAVE_FILE);
+  }
+
+  public clear(data: Event) {
+    this.store.executeMenuAction(MenuActionType.CLEAR_IMAGE);
+  }
+
+  // funmcitons for undo & Redo 
+  public undo() {
+    this.store.executeMenuAction(MenuActionType.UNDO)
+  }
+
+  public redo() {
+    this.store.executeMenuAction(MenuActionType.REPEAT);
+  }
+
 }
